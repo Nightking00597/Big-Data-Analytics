@@ -1,0 +1,34 @@
+-- Create external table (schema must match your CSV structure)
+CREATE EXTERNAL TABLE IF NOT EXISTS stock_data (
+    date STRING,
+    open DOUBLE,
+    high DOUBLE,
+    low DOUBLE,
+    close DOUBLE,
+    adj_close DOUBLE,
+    volume BIGINT,
+    ticker STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION '/user/homie/stock_data/';
+
+-- Query 1: Get average closing price per ticker
+SELECT
+    ticker,
+    ROUND(AVG(close), 2) AS avg_close_price
+FROM stock_data
+GROUP BY ticker
+ORDER BY avg_close_price DESC;
+
+-- Query 2: Find the highest volume trading day
+SELECT
+    date,
+    ticker,
+    volume
+FROM stock_data
+ORDER BY volume DESC
+LIMIT 1;
+
+
