@@ -43,9 +43,4 @@ This project demonstrates the creation of a scalable data pipeline for stock mar
 3. Upload sample stock market data to Google Cloud Storage.
 4. Follow the provided Hive and PySpark scripts to process and analyze the data.
 
-## Folder Structure
 
-- `/hive-scripts`: Hive queries for ETL and data warehousing.
-- `/pyspark-scripts`: PySpark scripts for data analysis.
-- `/data-samples`: Sample stock market data files.
-- `/docs`: Documentation and pipeline diagrams.
